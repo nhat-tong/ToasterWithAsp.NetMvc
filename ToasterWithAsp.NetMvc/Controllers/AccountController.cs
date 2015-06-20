@@ -13,7 +13,7 @@ using ToasterWithAsp.NetMvc.Models;
 namespace ToasterWithAsp.NetMvc.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
@@ -163,10 +163,14 @@ namespace ToasterWithAsp.NetMvc.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
+                    AddSuccessMessage("You have signed in successfully");
+
                     return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
             }
+
+            AddErrorMessage("Error occurs. Please try again");
 
             // If we got this far, something failed, redisplay form
             return View(model);
@@ -392,6 +396,9 @@ namespace ToasterWithAsp.NetMvc.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut();
+
+            AddInfoMessage("You have been sign out");
+
             return RedirectToAction("Index", "Home");
         }
 

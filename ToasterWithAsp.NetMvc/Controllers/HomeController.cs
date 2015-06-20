@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace ToasterWithAsp.NetMvc.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         public ActionResult Index()
         {
@@ -17,12 +17,16 @@ namespace ToasterWithAsp.NetMvc.Controllers
         {
             ViewBag.Message = "Your application description page.";
 
+            AddInfoMessage("You are about page");
+
             return View();
         }
 
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
+
+            AddSuccessMessage("You are contact page");
 
             return View();
         }

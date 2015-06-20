@@ -11,7 +11,7 @@ using ToasterWithAsp.NetMvc.Models;
 namespace ToasterWithAsp.NetMvc.Controllers
 {
     [Authorize]
-    public class ManageController : Controller
+    public class ManageController : BaseController
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;

@@ -1,0 +1,26 @@
+﻿@using ToasterWithAsp.NetMvc.POCO;
+@model Message
+
+<script>
+    $(function () {
+        @if(Model.MessageType == MessageType.Success)
+        {
+            <text>toastr.success('@Model.Content')</text>
+        }
+
+        @if(Model.MessageType == MessageType.Info)
+         {
+            <text>toastr.info('@Model.Content')</text>
+         }
+
+        @if(Model.MessageType == MessageType.Warning)
+         {
+            <text>toastr.warning('@Model.Content')</text>
+         }
+
+        @if(Model.MessageType == MessageType.Error)
+         {
+            <text>toastr.error('@Model.Content')</text>
+         }
+    });
+</script>
